@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: hamdy-job-portal
+    runtime: php
+    plan: free
+    region: oregon
+    buildCommand: composer install
