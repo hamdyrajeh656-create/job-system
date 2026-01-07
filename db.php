@@ -1,15 +1,16 @@
 <?php
-$host = "your_host_here"; // سنقوم بتغييره لاحقاً
-$user = "your_user_here";
-$pass = "your_password_here";
-$db   = "your_db_name_here";
+$host = "mysql-1d7fed74-hamdyrajeh656-4284.i.aivencloud.com";
+$port = "26059";
+$user = "avnadmin";
+$pass = "ضع_كلمة_المرور_هنا"; // اضغط على كلمة المرور في موقع Aiven لنسخها وضعها هنا
+$db   = "defaultdb";
 
-$conn = mysqli_connect($host, $user, $pass, $db);
-
-if (!$conn) {
-    die("فشل الاتصال بقاعدة البيانات: " . mysqli_connect_error());
+// الاتصال مع تفعيل SSL (مطلوب في Aiven)
+$conn = mysqli_init();
+mysqli_ssl_set($conn, NULL, NULL, NULL, NULL, NULL);
+if (!mysqli_real_connect($conn, $host, $user, $pass, $db, $port, NULL, MYSQLI_CLIENT_SSL)) {
+    die("فشل الاتصال: " . mysqli_connect_error());
 }
 
-// ضبط اللغة للعربية
 mysqli_set_charset($conn, "utf8mb4");
 ?>
