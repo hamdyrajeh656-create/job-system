@@ -1,7 +1,7 @@
 services:
   - type: web
     name: hamdy-job-portal
-    runtime: php
+    env: php
     plan: free
     region: oregon
     buildCommand: composer install
